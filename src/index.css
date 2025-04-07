@@ -1,1 +1,47 @@
 @import "tailwindcss";
+
+@theme {
+  /* Yellow shades */
+  --color-custom-yellow-50: #ffd400;
+  --color-custom-yellow-55: #ffd819;
+  --color-custom-yellow-70: #ffe566;
+  --color-custom-yellow-80: #ffee99;
+  --color-custom-yellow-90: #fff6cc;
+  --color-custom-yellow-95: #fffae5;
+  --color-custom-yellow-97: #fffcf0;
+  --color-custom-yellow-99: #fffefa;
+
+  /* White shades */
+  --color-custom-white-90: #e4e4e7;
+  --color-custom-white-95: #f1f1f3;
+  --color-custom-white-97: #f7f7f8;
+  --color-custom-white-99: #fcfcfd;
+
+  /* Grey shades */
+  --color-custom-grey-10: #1a1a1a;
+  --color-custom-grey-15: #262626;
+  --color-custom-grey-20: #333333;
+  --color-custom-grey-30: #4c4c4d;
+  --color-custom-grey-35: #59595a;
+  --color-custom-grey-40: #656567;
+  --color-custom-grey-60: #98989a;
+  --color-custom-grey-70: #b3b3b3;
+}
+
+.responsive-padding {
+  @apply px-4 lg:px-20 xl:px-40;
+}
+
+h2 {
+  @apply text-custom-grey-10 font-semibold text-4xl;
+}
+.small-text {
+  @apply font-semibold text-sm text-custom-grey-60;
+}
+.custom-paragraph {
+  @apply text-custom-grey-40 text-sm leading-6 mt-2.5 lg:mt-3 xl:mt-4;
+}
+
+.custom-yellow-button {
+  @apply py-3.5 px-5 rounded-4xl bg-custom-yellow-50 text-custom-grey-15 text-sm;
+}
