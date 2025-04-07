@@ -48,10 +48,13 @@ export const Experince = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12 bg-custom-white-97 rounded-2xl p-5">
         {EXPERINCES.map((item) => (
-          <div key={item.title} className="flex flex-col gap-2.5">
-            <div>
-              <div className="size-[44px] bg-custom-yellow-50"></div>
-              <p className="font-semibold text-xl text-custom-grey-10">
+          <div
+            key={item.title}
+            className="flex flex-col gap-2.5 bg-custom-white-99 rounded-2xl p-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="size-[44px] bg-custom-yellow-50 rounded-full"></div>
+              <p className="font-semibold text-[16px] text-custom-grey-15">
                 {item.title}
               </p>
             </div>
