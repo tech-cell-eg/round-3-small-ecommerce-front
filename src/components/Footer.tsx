@@ -45,13 +45,13 @@ export const Footer = () => {
   return (
     <>
       <footer className="hidden md:flex border-t border-gray-200 px-5 md:px-20 lg:px-40 border-b">
-        <div className="flex w-full">
+        <div className="flex w-full flex-wrap md:flex-col lg:flex-row">
           {/* Left section */}
-          <div className="flex flex-col pr-20 border-r border-gray-200 py-[80px]">
+          <div className="flex flex-col pr-20 border-r border-gray-200 py-[80px] md:mx-auto lg:mx-0 md:pr-0 lg:pr-20 md:border-0 lg:border-r">
             <div className="logo pb-12">
               <img src={Logo} alt="" />
             </div>
-            <div className="flex">
+            <div className="flex ">
               <input
                 type="text"
                 placeholder="Enter Your Email"
@@ -117,7 +117,7 @@ function FooterMobile() {
         </div>
       </div>
       {/* Input and subscribe */}
-      <div className="flex justify-between">
+      <div className="flex justify-between flex-wrap gap-3">
         <input
           type="text"
           placeholder="Enter Your Email"
