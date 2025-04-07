@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import "primereact/resources/themes/lara-light-cyan/theme.css";
 @theme {
   /* Yellow shades */
   --color-custom-yellow-50: #ffd400;

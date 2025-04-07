@@ -1,7 +1,7 @@
-import Logo from "../assets/logo.png";
-import FacebookButton from "../assets/facebook-button.png";
-import TwitterButton from "../assets/twitter-button.png";
-import LinkedInButton from "../assets/linkedin-button.png";
+import Logo from "../assets/icons/Logo.png";
+import FacebookButton from "../assets/icons/facebook-button.png";
+import TwitterButton from "../assets/icons/twitter-button.png";
+import LinkedInButton from "../assets/icons/linkedin-button.png";
 
 const FOOTER_LINKS = [
   {
