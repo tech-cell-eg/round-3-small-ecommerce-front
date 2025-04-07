@@ -1,7 +1,16 @@
 import { useRef } from "react";
 import { ProductCard } from "./ProductCard";
 
-export const ProductsCarousel = ({ products }) => {
+type Props = {
+  products: {
+    id: number;
+    images: string[];
+    title: string;
+    price: number;
+  }[];
+};
+
+export const ProductsCarousel = ({ products }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleScrollLeft = () => {
