@@ -5,7 +5,7 @@ import { Home } from "./pages/Home";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/round-3-small-ecommerce-front">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
