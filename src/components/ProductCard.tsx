@@ -1,4 +1,3 @@
-import React from "react";
 import ShoppingCart from "../assets/icons/shopping-cart.svg";
 
 type Props = {
