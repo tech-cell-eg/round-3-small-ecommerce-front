@@ -10,8 +10,8 @@ import FeaturesList from "../components/productsDetails/FeaturesList";
 
 import img from "../assets/Images/ProductsImage/Image .png";
 import img1 from "../assets/Images/ProductsImage/image 1.png";
-import img2 from "../assets/Images/ProductsImage/Image 2.png";
-import img3 from "../assets/Images/ProductsImage/Image 3.png";
+import img2 from "../assets/Images/ProductsImage/image 2.png";
+import img3 from "../assets/Images/ProductsImage/image 3.png";
 import Reviews from "../components/productsDetails/Reviews";
 import ProductPanels from "../components/productsDetails/ProductPanels";
 
