@@ -48,8 +48,9 @@ export const ProductsCarousel = ({ products }: Props) => {
         {products.map((product) => (
           <ProductCard
             key={product.id}
-            img={product.images[0]}
-            name={product.title}
+            id={product.id}
+            images={product.images}
+            title={product.title}
             price={product.price}
           />
         ))}

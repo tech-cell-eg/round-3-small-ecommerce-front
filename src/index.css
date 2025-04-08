@@ -45,3 +45,17 @@ h2 {
 .custom-yellow-button {
   @apply py-3.5 px-5 rounded-4xl bg-custom-yellow-50 text-custom-grey-15 text-sm;
 }
+
+/* carousel styles */
+
+.p-carousel .p-carousel-prev {
+  @apply text-custom-grey-40 border border-custom-grey-70 hover:bg-custom-grey-70;
+}
+
+.p-carousel .p-carousel-next {
+  @apply text-white bg-custom-grey-15 hover:bg-custom-grey-20;
+}
+
+.p-carousel .p-carousel-indicators li[data-p-highlight="true"] button {
+  @apply bg-black;
+}
