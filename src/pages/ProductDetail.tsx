@@ -2,17 +2,18 @@ import { useState } from "react";
 
 import { ShoppingCart } from "lucide-react";
 
-import ProductImageGallery from "../components/products/ProductImageGallery";
-import ColorSelector from "../components/products/ColorSelector";
-import SizeSelector from "../components/products/SizeSelector";
-import ShippingInfo from "../components/products/ShippingInfo";
-import FeaturesList from "../components/products/FeaturesList";
+import ProductImageGallery from "../components/productsDetails/ProductImageGallery";
+import ColorSelector from "../components/productsDetails/ColorSelector";
+import SizeSelector from "../components/productsDetails/SizeSelector";
+import ShippingInfo from "../components/productsDetails/ShippingInfo";
+import FeaturesList from "../components/productsDetails/FeaturesList";
 
-import img1 from "../assets/Images/ProductsImage/Image.png";
-import img2 from "../assets/Images/ProductsImage/Image (1).png";
-import img3 from "../assets/Images/ProductsImage/Image (3).png";
-import Reviews from "../components/products/Reviews";
-import ProductPanels from "../components/products/ProductPanels";
+import img from "../assets/Images/ProductsImage/Image .png";
+import img1 from "../assets/Images/ProductsImage/image 1.png";
+import img2 from "../assets/Images/ProductsImage/Image 2.png";
+import img3 from "../assets/Images/ProductsImage/Image 3.png";
+import Reviews from "../components/productsDetails/Reviews";
+import ProductPanels from "../components/productsDetails/ProductPanels";
 
 // Mock product data
 const productData = {
@@ -50,7 +51,7 @@ const ProductDetail = () => {
     productData.colors[0].name
   );
   const [selectedSize, setSelectedSize] = useState(productData.sizes[1]);
-  const productImages = [img1, img2, img3];
+  const productImages = [img, img1, img2, img3];
 
   return (
     <main className="max-w-7xl mx-auto px-4 py-8 md:px-8">

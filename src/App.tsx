@@ -5,11 +5,11 @@ import ProductDetail from "./pages/ProductDetail";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/round-3-small-ecommerce-front">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/products" element={<ProductDetail />} />
+          <Route path="/productsDetails" element={<ProductDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
