@@ -3,7 +3,7 @@ import axios from "axios";
 import { ProductsCarousel } from "../ProductsCarousel";
 
 export const DiscoverFashion = () => {
-  const [category, setCategory] = useState("men's clothing");
+  const [category, setCategory] = useState("mens-shirts");
   const [activeCategory, setActiveCategory] = useState("furniture");
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
