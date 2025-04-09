@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ProductsCarousel } from "../ProductsCarousel";
+import { Link } from "react-router-dom";
 
 export const DiscoverFashion = () => {
   const [category, setCategory] = useState("mens-shirts");
@@ -59,44 +60,28 @@ export const DiscoverFashion = () => {
   }
 
   return (
-    <div className="responsive-padding mt-16">
-      <div className="flex flex-col">
-        <div>
-          <p className="small-text">Products</p>
-          <h2 className="mt-5">Discover Fashion.</h2>
+    <div className="responsive-padding mt-20 xl:mt-[150px]">
+      <div className="flex flex-col lg:flex-row lg:items-center items-start justify-between">
+        <div className="flex flex-col w-full lg:w-[70%]">
+          <div>
+            <p className="small-text">Products</p>
+            <h2>Discover Fashion.</h2>
+          </div>
+          <div>
+            <p className="custom-paragraph mt-3 ">
+              Dive into a world of fashion innovation at Klothink. Our carefully
+              curated collections bring together the latest trends and timeless
+              classics, ensuring you find the perfect pieces for every occasion.
+            </p>
+          </div>
         </div>
-        <div>
-          <p className="custom-paragraph mt-3">
-            Dive into a world of fashion innovation at Klothink. Our carefully
-            curated collections bring together the latest trends and timeless
-            classics, ensuring you find the perfect pieces for every occasion.
-          </p>
-        </div>
-        <button className="custom-yellow-button self-start mt-4">
+        <Link to="/products" className="custom-yellow-button mt-4">
           View All Products
-        </button>
+        </Link>
       </div>
 
       {/* category */}
-      <div className="flex flex-row-reverse justify-between items-center flex-wrap">
-        <ul className="flex gap-5">
-          <li>
-            <button className="text-custom-grey-60 bg-black py-3 px-4 rounded-4xl">
-              Casual
-            </button>
-          </li>
-          <li>
-            <button className="text-custom-grey-60 bg-black py-3 px-4 rounded-4xl">
-              Formal
-            </button>
-          </li>
-          <li>
-            <button className="text-custom-grey-60 bg-black py-3 px-4 rounded-4xl">
-              Party
-            </button>
-          </li>
-        </ul>
-
+      <div className="flex flex-row justify-between items-center flex-wrap">
         <ul
           className="mt-8 flex gap-5 py-5 overflow-x-scroll whitespace-nowrap max-w-[600px]"
           style={{ msOverflowStyle: "none", scrollbarColor: "black" }}

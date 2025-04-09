@@ -7,13 +7,25 @@ type ColorSelectorProps = {
   colors: Color[];
   selectedColor: string;
   onSelectColor: (color: string) => void;
+  onSelectValue?: (value: string) => void;
 };
 
 const ColorSelector = ({
   colors,
   selectedColor,
   onSelectColor,
+  onSelectValue,
 }: ColorSelectorProps) => {
+  function handleClick(color: Color) {
+    if (onSelectValue) {
+      onSelectValue(color.value);
+      onSelectColor(color.name);
+      console.log(color.value);
+    } else {
+      onSelectColor(color.name);
+    }
+  }
+
   return (
     <div className="flex gap-2">
       {colors.map((color) => (
@@ -25,7 +37,7 @@ const ColorSelector = ({
               : "ring-0"
           }`}
           style={{ backgroundColor: color.value }}
-          onClick={() => onSelectColor(color.name)}
+          onClick={() => handleClick(color)}
           aria-label={`Select ${color.name} color`}
         />
       ))}
