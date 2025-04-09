@@ -62,3 +62,8 @@ h2 {
 .p-carousel .p-carousel-indicators li[data-p-highlight="true"] button {
   @apply bg-black;
 }
+
+/* accordion styles */
+.p-accordion-header .p-accordion-toggle-icon {
+  display: none;
+}

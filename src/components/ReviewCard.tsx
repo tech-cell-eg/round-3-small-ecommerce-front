@@ -38,10 +38,10 @@ export const ReviewCard = ({ dummyComment }: Props) => {
         </div>
         <div>
           <QuoteIcon
-            size={24}
+            size={40}
             color="#ffd400"
             fill="#ffd400"
-            className="rotate-180"
+            className="rotate-180 opacity-50"
           />
         </div>
       </div>
