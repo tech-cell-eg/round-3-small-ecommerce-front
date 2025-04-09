@@ -3,8 +3,15 @@ import icon from "../assets/icons/Icon.png";
 import icon2 from "../assets/icons/Icon.svg";
 import Button from "../assets/icons/Button.png";
 import Logo from "../assets/icons/Logo.png";
+import { useState } from "react";
 
 export const Navbar = () => {
+  const [activeLink, setActiveLink] = useState("/");
+
+  const handleLinkClick = (link: string) => {
+    setActiveLink(link);
+  };
+
   return (
     <>
       <div className="w-full py-2 responsive-padding  bg-black text-[10px] md:text-xs flex items-center justify-center text-white">
@@ -18,13 +25,23 @@ export const Navbar = () => {
             <nav className="hidden md:flex items-center gap-4 w-60 h-14">
               <Link
                 to="/"
-                className="px-6 py-3.5 text-[#656567] rounded-4xl border-1 border-[#ececec]"
+                onClick={() => handleLinkClick("/")}
+                className={`px-6 py-3.5 text-[#656567] rounded-4xl border-1 border-[#ececec] ${
+                  activeLink === "/"
+                    ? "bg-gray-400 text-black"
+                    : "bg-transparent"
+                }`}
               >
                 Home
               </Link>
               <Link
                 to="/products"
-                className="px-6 py-3.5 text-black rounded-4xl bg-gray-200 border-1 border-[#ececec]"
+                onClick={() => handleLinkClick("/products")}
+                className={`px-6 py-3.5  rounded-4xl bg-gray-200 border-1 border-[#ececec] ${
+                  activeLink === "/products"
+                    ? "bg-gray-400"
+                    : "bg-transparent text-[#656567] "
+                }`}
               >
                 Products
               </Link>
