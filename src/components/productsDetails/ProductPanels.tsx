@@ -38,7 +38,7 @@ const ProductPanels = () => {
         {columns.map((col) => (
           <div key={col} className="space-y-4">
             {panelContent.map((panel, index) => (
-              <Panel key={index} header={panel.header} toggleable>
+              <Panel key={index} header={panel.header} toggleable collapsed>
                 <p className="m-0">{panel.content}</p>
               </Panel>
             ))}
