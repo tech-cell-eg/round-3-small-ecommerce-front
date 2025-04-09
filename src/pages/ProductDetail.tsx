@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ShoppingCart } from "lucide-react";
 
@@ -8,12 +8,10 @@ import SizeSelector from "../components/productsDetails/SizeSelector";
 import ShippingInfo from "../components/productsDetails/ShippingInfo";
 import FeaturesList from "../components/productsDetails/FeaturesList";
 
-import img from "../assets/Images/ProductsImage/Image .png";
-import img1 from "../assets/Images/ProductsImage/image 1.png";
-import img2 from "../assets/Images/ProductsImage/image 2.png";
-import img3 from "../assets/Images/ProductsImage/image 3.png";
 import Reviews from "../components/productsDetails/Reviews";
 import ProductPanels from "../components/productsDetails/ProductPanels";
+import { useParams } from "react-router-dom";
+import { Product } from "../types/product";
 
 // Mock product data
 const productData = {
@@ -46,35 +44,69 @@ const productData = {
   ],
 };
 
+const staticSizes = ["S", "M", "L", "XL", "XXL"];
+const staticColors = [
+  { name: "Black", value: "#000000" },
+  { name: "Khaki", value: "#d4be8d" },
+  { name: "Olive", value: "#6e7e58" },
+];
+
 const ProductDetail = () => {
-  const [selectedColor, setSelectedColor] = useState(
-    productData.colors[0].name
-  );
-  const [selectedSize, setSelectedSize] = useState(productData.sizes[1]);
-  const productImages = [img, img1, img2, img3];
+  const { id } = useParams();
+
+  const [dynamicProduct, setDynamicProduct] = useState<Product>();
+  const [selectedColor, setSelectedColor] = useState(staticColors[0].name);
+  const [selectedSize, setSelectedSize] = useState(staticSizes[1]);
+  // const productImages = [img, img1, img2, img3];
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(`https://dummyjson.com/products/${id}`);
+        const data = await res.json();
+        setDynamicProduct(data);
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, [id]);
+
+  if (!dynamicProduct) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <main className="max-w-7xl mx-auto px-4 py-8 md:px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         {/* Product Images */}
-        <ProductImageGallery images={productImages} alt={productData.name} />
+        <ProductImageGallery
+          images={dynamicProduct.images}
+          alt={dynamicProduct.title}
+        />
 
         {/* Product Details */}
         <div className="space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1 mb-1">
-                <p className="text-gray-500 text-sm">{productData.category}</p>
-                {productData.label && (
+                <p className="text-gray-500 text-sm">
+                  {dynamicProduct.category}
+                </p>
+                {dynamicProduct.stock > 0 && (
                   <span className="bg-[#FFE566] text-xs px-1 py-0.5 rounded-full text-black font-medium">
-                    {productData.label}
+                    {dynamicProduct.stock}
                   </span>
                 )}
               </div>
               <div>
-                <h1 className="text-2xl font-semibold">{productData.name}</h1>
+                <h1 className="text-2xl font-semibold">
+                  {dynamicProduct.title}
+                </h1>
                 <p className="text-2xl font-bold mt-2">
-                  ${productData.price.toFixed(2)}
+                  ${dynamicProduct.price.toFixed(2)}
                 </p>
               </div>
             </div>
@@ -123,7 +155,9 @@ const ProductDetail = () => {
 
           <div className="border border-[#F1F1F3] p-7 rounded-4xl">
             <h3 className="text-sm font-medium mb-2">Shipping Information</h3>
-            <ShippingInfo shippingDetails={productData.shipping} />
+            <ShippingInfo
+              shippingDetails={dynamicProduct.shippingInformation}
+            />
           </div>
 
           <div className="border border-[#F1F1F3] p-7 rounded-4xl">
@@ -135,7 +169,7 @@ const ProductDetail = () => {
       </div>
 
       {/* Reviews Section */}
-      <Reviews />
+      <Reviews reviews={dynamicProduct.reviews} />
 
       {/* FAQ Section */}
       <ProductPanels />
