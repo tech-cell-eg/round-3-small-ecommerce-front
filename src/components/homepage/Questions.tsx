@@ -1,5 +1,5 @@
 import { SetStateAction, useState } from "react";
-import { Accordion, AccordionTab } from "primereact/accordion";
+import { Panel } from "primereact/panel";
 
 const QUESTIONS_DATA: { title: string; answer: string; category: string }[] = [
   {
@@ -54,21 +54,18 @@ export const Questions = () => {
 
   return (
     <div className="responsive-padding mt-16">
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full lg:w-[70%]">
         <div>
           <p className="small-text">FAQ</p>
-          <h2 className="mt-5">QUESTIONS? WE HAVE ANSWERS</h2>
+          <h2>QUESTIONS? WE HAVE ANSWERS</h2>
         </div>
         <div>
-          <p className="custom-paragraph mt-3">
+          <p className="custom-paragraph">
             Ease into the world of Klothink with clarity. Our FAQs cover a
             spectrum of topics, ensuring you have the information you need for a
             seamless shopping experience.
           </p>
         </div>
-        <button className="custom-yellow-button self-start mt-4">
-          View All FAQ's
-        </button>
       </div>
 
       {/* FAQ list */}
@@ -89,7 +86,7 @@ export const Questions = () => {
       </ul>
 
       {/* questions and answers */}
-      <div>
+      {/* <div>
         <Accordion className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {questions.map((question) => (
             <AccordionTab
@@ -101,6 +98,21 @@ export const Questions = () => {
             </AccordionTab>
           ))}
         </Accordion>
+      </div> */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {questions.map((question) => (
+          <Panel
+            key={question.title}
+            className="text-custom-grey-15 text-[16px] font-semibold"
+            header={question.title}
+            toggleable
+            collapsed
+          >
+            <p className="text-custom-grey-30 font-normal text-[14px] 2xl:text-lg leading-6">
+              {question.answer}
+            </p>
+          </Panel>
+        ))}
       </div>
     </div>
   );

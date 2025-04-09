@@ -27,6 +27,9 @@
   --color-custom-grey-60: #98989a;
   --color-custom-grey-70: #b3b3b3;
 }
+* {
+  font-family: "Manrope", sans-serif;
+}
 
 .responsive-padding {
   @apply px-4 lg:px-20 xl:px-40;

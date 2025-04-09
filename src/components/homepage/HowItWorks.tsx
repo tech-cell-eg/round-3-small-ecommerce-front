@@ -28,13 +28,13 @@ const CARDS = [
 export const HowItWorks = () => {
   return (
     <div className="responsive-padding mt-16">
-      <div className="flex flex-col">
+      <div className="flex flex-col cw-full lg:w-[70%]">
         <div>
           <p className="small-text">How it Works ?</p>
-          <h2 className="mt-5">Seamless Experience.</h2>
+          <h2>Seamless Experience.</h2>
         </div>
         <div>
-          <p className="custom-paragraph mt-3">
+          <p className="custom-paragraph">
             At Klothink, we've designed a straightforward shopping experience to
             make fashion accessible. Explore the journey from discovering the
             latest trends to receiving your handpicked styles with ease.
@@ -49,7 +49,9 @@ export const HowItWorks = () => {
             key={card.id}
             className="p-6 flex flex-row md:flex-col gap-5 items-center md:items-start bg-white rounded-2xl"
           >
-            <p className="text-custom-white-90 text-5xl">{card.num}</p>
+            <p className="text-custom-white-90 text-5xl font-semibold">
+              {card.num}
+            </p>
             <div className="flex flex-col">
               <h3 className="text-[16px] text-custom-grey-20 font-semibold leading-[150%]">
                 {card.title}

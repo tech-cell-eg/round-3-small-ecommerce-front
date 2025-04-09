@@ -2,6 +2,7 @@ import { Carousel } from "primereact/carousel";
 import { ProductCard } from "../ProductCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Product } from "../../types/product";
 
 type Props = {
   title: string;
@@ -10,12 +11,17 @@ type Props = {
 };
 const responsiveOptions = [
   {
+    breakpoint: "2560px",
+    numVisible: 4,
+    numScroll: 1,
+  },
+  {
     breakpoint: "1920px",
     numVisible: 4,
     numScroll: 1,
   },
   {
-    breakpoint: "1400px",
+    breakpoint: "1700px",
     numVisible: 3,
     numScroll: 1,
   },
@@ -42,7 +48,7 @@ export const ProductsPrimeCarousel = ({
   paragraph,
 }: Props) => {
   const isSmallScreen = window.innerWidth < 768;
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     async function fetchByCategory() {
@@ -59,6 +65,10 @@ export const ProductsPrimeCarousel = ({
     fetchByCategory();
   }, [secondaryCategory]);
 
+  const productTemplate = (product: Product) => {
+    return <ProductCard product={product} />;
+  };
+
   return (
     <div className="mt-14">
       <h3 className="text-[18px] font-semibold md:text-[24px] text-custom-grey-20">
@@ -66,10 +76,9 @@ export const ProductsPrimeCarousel = ({
       </h3>
       <p className="text-[16px] text-custom-grey-40 mb-7 mt-1">{paragraph}</p>
 
-      {/* Carousel */}
       <Carousel
         value={filteredProducts}
-        itemTemplate={ProductCard}
+        itemTemplate={productTemplate}
         orientation={isSmallScreen ? "vertical" : "horizontal"}
         responsiveOptions={responsiveOptions}
         verticalViewPortHeight="850px"
