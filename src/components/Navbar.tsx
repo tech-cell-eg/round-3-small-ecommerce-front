@@ -41,7 +41,7 @@ export const Navbar = () => {
           {/* Navbar links and cart icon for mobile */}
           <div className="hidden md:flex items-center gap-3">
             <Link to="/cart" className="p-2 relative  ">
-              <img src={Button} alt="Cart" className="w-13 h-13" />
+              <img src={Button} alt="Cart" className="w-15 h-15" />
             </Link>
             <Link
               to="/contact"
