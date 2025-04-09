@@ -78,18 +78,7 @@ const ProductDetail = () => {
                 </p>
               </div>
             </div>
-            {/* <div className="flex gap-4 mt-4 md:mt-0">
-             
-              <button className="bg-black hover:bg-gray-800 text-white py-2 px-6 rounded-lg text-sm md:text-base w-full md:w-auto">
-                Buy Now
-              </button>
 
-        
-              <button className="text-black hover:bg-gray-100 rounded-full flex items-center gap-2 border border-gray-100 py-2 px-6 w-full md:w-auto">
-                <ShoppingCart className="h-4 w-4" />
-                Add to cart
-              </button>
-            </div> */}
             <div className="flex items-center gap-4">
               {/* Buy Now Button */}
               <button className="p-4 w-44 h-14 bg-black text-white text-sm font-medium rounded-full border-2 hover:bg-gray-800 transition-all">

@@ -1,4 +1,4 @@
-import { Panel } from "primereact/panel"; // تأكد من أنك تستورد Panel بشكل صحيح
+import { Panel } from "primereact/panel";
 
 const panelContent = [
   {
