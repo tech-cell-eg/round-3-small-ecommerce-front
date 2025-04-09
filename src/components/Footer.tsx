@@ -43,9 +43,9 @@ const FOOTER_LINKS = [
 
 export const Footer = () => {
   return (
-    <>
-      <footer className="hidden md:flex border-t border-gray-200 px-5 md:px-20 lg:px-40 border-b">
-        <div className="flex w-full flex-wrap md:flex-col lg:flex-row">
+    <div className="max-w-[1596px] mx-auto">
+      <footer className="mt-24 2xl:mt-36 hidden md:flex border-t border-gray-200 px-5 md:px-20 lg:px-40 border-b">
+        <div className="flex w-full flex-wrap md:flex-col xl:flex-row">
           {/* Left section */}
           <div className="flex flex-col pr-20 border-r border-gray-200 py-[80px] md:mx-auto lg:mx-0 md:pr-0 lg:pr-20 md:border-0 lg:border-r">
             <div className="logo pb-12">
@@ -83,7 +83,7 @@ export const Footer = () => {
         </div>
       </footer>
       {/* Conidtions and footer bottom */}
-      <div className="hidden md:flex justify-between px-5 md:px-20 lg:px-40 py-5">
+      <div className="hidden md:flex flex-wrap justify-between px-5 md:px-20 lg:px-40 py-5">
         <div className="flex gap-5">
           <p>Terms & Conditions</p>
           <p>Privacy Policy</p>
@@ -98,13 +98,13 @@ export const Footer = () => {
         </p>
       </div>
       <FooterMobile />
-    </>
+    </div>
   );
 };
 
 function FooterMobile() {
   return (
-    <div className="flex flex-col gap-5 md:hidden px-3 py-6">
+    <div className="flex flex-col gap-5 md:hidden px-3 py-6 mt-20">
       {/* Logo and socials */}
       <div className="flex flex-1 justify-between">
         <div className="size-[50px]">
