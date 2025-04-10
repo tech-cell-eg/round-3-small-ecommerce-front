@@ -60,6 +60,9 @@ const ProductDetail = () => {
   // const productImages = [img, img1, img2, img3];
 
   useEffect(() => {
+    // scroll to top
+    window.scrollTo(0, 0);
+
     async function fetchData() {
       try {
         const res = await fetch(`https://dummyjson.com/products/${id}`);

@@ -1,5 +1,11 @@
 import { SetStateAction, useState } from "react";
-import { Panel } from "primereact/panel";
+
+import {
+  Accordion,
+  AccordionTab,
+  AccordionTabChangeEvent,
+} from "primereact/accordion";
+import { XIcon } from "lucide-react";
 
 const QUESTIONS_DATA: { title: string; answer: string; category: string }[] = [
   {
@@ -39,6 +45,7 @@ export const Questions = () => {
     useState<SetStateAction<string>>("All");
 
   const [questions, setQuestions] = useState(QUESTIONS_DATA);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null); // Add activeIndex state
 
   const handleCategoryClick = (category: string) => {
     setActiveCategory(category);
@@ -50,6 +57,27 @@ export const Questions = () => {
       );
       setQuestions(filteredQuestions);
     }
+  };
+
+  const headerTemplate = (options: {
+    title: string;
+    index: number;
+    onClick: () => void;
+  }) => {
+    const isActive = activeIndex === options.index;
+    return (
+      <button
+        className="flex items-center justify-between w-full cursor-pointer"
+        onClick={options.onClick}
+      >
+        <span className="text-[16px] font-semibold">{options.title}</span>
+        <XIcon
+          className={`transition duration-300 ${
+            isActive ? "rotate-45" : ""
+          } text-custom-grey-60`}
+        />
+      </button>
+    );
   };
 
   return (
@@ -86,33 +114,34 @@ export const Questions = () => {
       </ul>
 
       {/* questions and answers */}
-      {/* <div>
-        <Accordion className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {questions.map((question) => (
+      <div>
+        <Accordion
+          activeIndex={activeIndex}
+          onTabChange={(e: AccordionTabChangeEvent) => {
+            setActiveIndex(typeof e.index === "number" ? e.index : null);
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          {questions.map((question, index) => (
             <AccordionTab
               key={question.title}
+              headerTemplate={() =>
+                headerTemplate({
+                  title: question.title,
+                  index: index,
+                  onClick: () => {
+                    setActiveIndex(activeIndex === index ? null : index);
+                  },
+                })
+              }
               className="text-custom-grey-15 text-[16px] font-semibold"
-              header={question.title}
             >
-              <p className="custom-paragraph text-[14px]">{question.answer}</p>
+              <p className="text-custom-grey-30 font-normal text-[14px] 2xl:text-lg leading-6">
+                {question.answer}
+              </p>
             </AccordionTab>
           ))}
         </Accordion>
-      </div> */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {questions.map((question) => (
-          <Panel
-            key={question.title}
-            className="text-custom-grey-15 text-[16px] font-semibold"
-            header={question.title}
-            toggleable
-            collapsed
-          >
-            <p className="text-custom-grey-30 font-normal text-[14px] 2xl:text-lg leading-6">
-              {question.answer}
-            </p>
-          </Panel>
-        ))}
       </div>
     </div>
   );
