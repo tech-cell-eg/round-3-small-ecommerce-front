@@ -93,7 +93,7 @@ const SupportPage = () => {
   return (
     <div className="responsive-padding ">
       <main className="max-w-7xl mx-auto px-4 py-12 md:px-8 ">
-        {/* Support Header Section - Mobile Friendly */}
+        {/* Support Header Section  */}
         <div className="md:mb-16 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-1 gap-6 md:gap-8">
             <div className="text-2xl md:text-3xl font-bold">
@@ -140,7 +140,7 @@ const SupportPage = () => {
           </div>
         </div>
 
-        {/* Office Locations - Redesigned for Mobile */}
+        {/* Office Locations  */}
         <div className="mb-8 lg:mb-20">
           <div className="md:text-3xl font-bold">
             <h2 className="text-base md:text-xl font-semibold mb-4 md:mb-10 inline-block px-3 py-1 rounded">
@@ -178,7 +178,7 @@ const SupportPage = () => {
           </div>
         </div>
 
-        {/* Return Policy - Mobile Optimized */}
+        {/* Return Policy  */}
         <div className="mb-8 md:mb-16">
           <div className="flex justify-between items-center mb-4 md:mb-8">
             <div>
@@ -212,20 +212,10 @@ const SupportPage = () => {
               </div>
             ))}
           </div>
-
-          {/* <Button
-            variant="ghost"
-            size="sm"
-            className="text-black hover:bg-transparent hover:text-brand-yellow text-xs md:text-sm flex md:hidden mt-4"
-          >
-            Read Return Policy{" "}
-            <ChevronRight className="h-3 w-3 md:h-4 md:w-4 ml-1" />
-          </Button> */}
         </div>
 
-        {/* Cancellation Policy - Mobile Optimized */}
+        {/* Cancellation Policy  */}
         <div className="mb-8 md:mb-16">
-          {/* عنوان القسم + الزرار */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 md:mb-8 gap-4">
             <div>
               <h2 className="text-xl md:text-2xl font-semibold leading-snug">
@@ -242,13 +232,11 @@ const SupportPage = () => {
             </button>
           </div>
 
-          {/* الوصف تحت العنوان */}
           <p className="text-gray-700 mb-6 md:mb-10 max-w-3xl text-sm">
             Find all the details if you need to cancel an order or make changes
             to your order after it's placed.
           </p>
 
-          {/* الكروت الثلاثة */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-6 rounded-xl border border-gray-200">
             {cancellationPolicyItems.map((item, index) => (
               <div key={index}>
@@ -262,14 +250,13 @@ const SupportPage = () => {
             ))}
           </div>
 
-          {/* زرار يظهر في الموبايل فقط */}
           <button className="text-black hover:bg-transparent hover:text-brand-yellow text-xs md:text-sm flex md:hidden items-center mt-4 px-4 py-2 bg-[#F7F7F8] rounded-3xl w-fit">
             Read Cancellation Policy
             <ChevronRight className="h-3 w-3 md:h-4 md:w-4 ml-1" />
           </button>
         </div>
 
-        {/* FAQ Section - Optimized for Mobile */}
+        {/* FAQ Section  */}
         <div className="mb-12 md:mb-20">
           <div className="mb-6 md:mb-10">
             <h2 className="text-xl md:text-2xl font-semibold">
@@ -304,7 +291,6 @@ const SupportPage = () => {
             </div>
 
             <div className="mt-2 text-sm text-gray-700">
-              {/* هنا المحتوى حسب التاب المختار */}
               {activeTab === "all" && <p>All content here</p>}
               {activeTab === "ordering" && <p>Ordering content</p>}
               {activeTab === "shipping" && <p>Shipping info</p>}

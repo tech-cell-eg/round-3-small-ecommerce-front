@@ -65,7 +65,7 @@ const ProductDetail = () => {
         const res = await fetch(`https://dummyjson.com/products/${id}`);
         const data = await res.json();
         setDynamicProduct(data);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.error(error);
       }

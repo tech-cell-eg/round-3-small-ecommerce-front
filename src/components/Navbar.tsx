@@ -57,7 +57,7 @@ export const Navbar = () => {
 
           {/* Navbar links and cart icon for mobile */}
           <div className="hidden md:flex items-center gap-3">
-            <Link to="/" className="p-2 relative  ">
+            <Link to="/products" className="p-2 relative  ">
               <img src={Button} alt="Cart" className="w-15 h-15" />
             </Link>
             <Link
@@ -78,7 +78,7 @@ export const Navbar = () => {
 
             {/* Button on the right */}
             <div className="flex gap-3">
-              <Link to="/" className="p-2 relative">
+              <Link to="//products" className="p-2 relative">
                 <img src={Button} alt="Cart" className="w-11 h-11" />
               </Link>
               <button className=" text-white     hover:cursor-pointer hover:bg-gray-50 rounded-full p-2  ">
