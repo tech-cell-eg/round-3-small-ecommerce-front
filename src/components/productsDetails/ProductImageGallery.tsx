@@ -15,11 +15,15 @@ const ProductImageGallery = ({ images, alt }: ProductImageGalleryProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
       {/* Thumbnails */}
-      <div className="flex gap-2 mt-1 overflow-x-auto md:flex-col md:overflow-y-auto">
+      <div className="flex gap-2 mt-1 overflow-x-auto md:flex-col md:overflow-y-auto lg:mx-10">
         {images.map((image, index) => (
           <button
             key={index}
-            className="w-[70px] h-[70px] my-2 border rounded-md overflow-hidden transition-all hover:bg-gray-200 cursor-pointer"
+            className={`w-[70px] h-[70px] rounded-md overflow-hidden transition-all cursor-pointer ${
+              selectedImageIndex === index
+                ? "border-2 border-blue-500"
+                : "hover:bg-gray-200"
+            }`}
             onClick={() => setSelectedImageIndex(index)}
           >
             <img src={image} className="w-full h-full object-cover" />

@@ -68,7 +68,7 @@ const ProductDetail = () => {
         const res = await fetch(`https://dummyjson.com/products/${id}`);
         const data = await res.json();
         setDynamicProduct(data);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -92,7 +92,7 @@ const ProductDetail = () => {
 
         {/* Product Details */}
         <div className="space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1 mb-1">
                 <p className="text-gray-500 text-sm">
@@ -113,12 +113,16 @@ const ProductDetail = () => {
                 </p>
               </div>
             </div>
-            <div className="flex gap-4">
-              <button className="w-49 h-16  bg-black hover:bg-gray-800 text-white rounded-full ">
+
+            <div className="flex items-center gap-4">
+              {/* Buy Now Button */}
+              <button className="p-4 w-44 h-14 bg-black text-white text-sm font-medium rounded-full border-2 hover:bg-gray-800 transition-all">
                 Buy Now
               </button>
-              <button className="w-49 h-16 px-4  text-black hover:bg-gray-100 rounded-full  flex items-center  gap-1 border-1 border-gray-100  ">
-                <ShoppingCart className=" h-4 w-4 " />
+
+              {/* Add to Cart Button */}
+              <button className="p-4 w-44 h-14 text-black text-sm font-medium rounded-full border-2 border-gray-300 flex items-center justify-center gap-2 hover:bg-gray-100 transition-all">
+                <ShoppingCart className="h-4 w-4" />
                 Add to cart
               </button>
             </div>
@@ -135,7 +139,7 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-8 mt-3">
+            <div className="grid md:grid-cols-2 gap-8 mt-3">
               <div>
                 <h3 className="text-sm font-medium mb-2">Color</h3>
                 <ColorSelector

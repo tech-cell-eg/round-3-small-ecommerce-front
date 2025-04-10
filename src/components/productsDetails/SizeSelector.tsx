@@ -14,7 +14,7 @@ const SizeSelector = ({
       {sizes.map((size) => (
         <button
           key={size}
-          className={`w-8 h-8 flex items-center justify-center border rounded text-sm transition-all  cursor-pointer
+          className={`w-8 h-8 p-2 flex items-center justify-center border rounded text-sm transition-all  cursor-pointer
             ${
               selectedSize === size
                 ? "bg-black text-white"
