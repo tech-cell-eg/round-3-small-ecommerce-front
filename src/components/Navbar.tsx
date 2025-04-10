@@ -1,15 +1,24 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import Button from "../assets/icons/Button.png";
 import icon from "../assets/icons/Icon.png";
 import icon2 from "../assets/icons/Icon.svg";
-import Button from "../assets/icons/Button.png";
 import Logo from "../assets/icons/Logo.png";
-import { useState } from "react";
+import { useAppSelector } from "../redux/reduxHooks";
+import { CartDropdown } from "./CartDropdown";
 
 export const Navbar = () => {
   const [activeLink, setActiveLink] = useState("/");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const cart = useAppSelector((state) => state.cart);
 
   const handleLinkClick = (link: string) => {
     setActiveLink(link);
+  };
+
+  const handleCartClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -57,9 +66,20 @@ export const Navbar = () => {
 
           {/* Navbar links and cart icon for mobile */}
           <div className="hidden md:flex items-center gap-3">
-            <Link to="/products" className="p-2 relative  ">
+            <button className="p-2 relative" onClick={handleCartClick}>
               <img src={Button} alt="Cart" className="w-15 h-15" />
-            </Link>
+              {/* cart counter */}
+              {cart.length > 0 && (
+                <div className="absolute top-0 right-0 size-5 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">
+                  {cart.length}
+                </div>
+              )}
+              {isDropdownOpen ? (
+                <div className="absolute top-20 right-0 z-10">
+                  <CartDropdown />
+                </div>
+              ) : null}
+            </button>
             <Link
               to="/support"
               className="p-4 w-46 h-14 text-sm text-center font-medium rounded-4xl border-1 border-[#ececec]"
@@ -78,9 +98,17 @@ export const Navbar = () => {
 
             {/* Button on the right */}
             <div className="flex gap-3">
-              <Link to="//products" className="p-2 relative">
+              <button className="p-2 relative" onClick={handleCartClick}>
                 <img src={Button} alt="Cart" className="w-11 h-11" />
-              </Link>
+                <div className="absolute top-0 right-0 size-5 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">
+                  {cart.length}
+                </div>
+                {isDropdownOpen ? (
+                  <div className="absolute top-20 -right-10 z-10">
+                    <CartDropdown />
+                  </div>
+                ) : null}
+              </button>
               <button className=" text-white     hover:cursor-pointer hover:bg-gray-50 rounded-full p-2  ">
                 <img src={icon2} alt="Menu" className="w-8.5 h-8.5" />
               </button>

@@ -73,7 +73,7 @@ export const Questions = () => {
         <span className="text-[16px] font-semibold">{options.title}</span>
         <XIcon
           className={`transition duration-300 ${
-            isActive ? "rotate-45" : ""
+            isActive ? "" : "rotate-45"
           } text-custom-grey-60`}
         />
       </button>
