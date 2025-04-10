@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { HeroImage } from "./HeroImage";
+import shoppingBag from "../../assets/icons/shopping-bag.svg";
 
 const DATA = [
   { title: "OVER 1000+", subtitle: "Trendsetting Styles" },
@@ -26,8 +27,9 @@ const Hero = () => {
           <div className="flex justify-between lg:justify-start gap-4 mt-6">
             <Link
               to="/products"
-              className="bg-custom-yellow-50 rounded-4xl w-[165px] h-[50px] text-custom-grey-15 hover:bg-yellow-500 hover:font-bold hover:cursor-pointer transition-all ease-in-out duration-150 flex items-center justify-center"
+              className="bg-custom-yellow-50 rounded-4xl w-[165px] h-[50px] text-custom-grey-15 hover:bg-yellow-500 hover:font-bold hover:cursor-pointer transition-all ease-in-out duration-150 flex items-center justify-center  gap-2.5"
             >
+              <img src={shoppingBag} alt="" />
               Shop Now
             </Link>
             <button className="bg-custom-white-95 rounded-4xl w-[165px] h-[50px] text-sm text-custom-grey-15 hover:bg-custom-white-99 hover:cursor-pointer hover:font-bold transition-all ease-in-out duration-150">

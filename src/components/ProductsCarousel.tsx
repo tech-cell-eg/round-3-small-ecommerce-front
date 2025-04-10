@@ -11,13 +11,15 @@ export const ProductsCarousel = ({ products }: Props) => {
   const [scrollableLeft, setScrollableLeft] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const handleScrollLeft = () => {
+  const handleScrollLeft = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (scrollRef.current) {
       scrollRef.current.scrollLeft -= 300;
     }
   };
 
-  const handleScrollRight = () => {
+  const handleScrollRight = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (scrollRef.current) {
       scrollRef.current.scrollLeft += 300;
     }
@@ -48,28 +50,26 @@ export const ProductsCarousel = ({ products }: Props) => {
   return (
     <div className="relative mt-8">
       <button
-        className={`absolute left-10 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white border border-black text-black rounded-full flex items-center justify-center hover:cursor-pointer transition-opacity ${
-          scrollableLeft
-            ? "opacity-75"
-            : "opacity-25 pointer-events-none  border-0"
-        }`}
-        onClick={handleScrollLeft}
+        className={`absolute left-10 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:cursor-pointer transition-opacity ${
+          scrollableLeft ? "opacity-100" : "opacity-25"
+        } z-10`}
+        onClick={(e) => handleScrollLeft(e)}
       >
         ←
       </button>
 
       <button
         className={`absolute right-10 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:cursor-pointer transition-opacity ${
-          scrollableRight ? "opacity-100" : "opacity-25 pointer-events-none"
-        }`}
-        onClick={handleScrollRight}
+          scrollableRight ? "opacity-100" : "opacity-25"
+        } z-10`}
+        onClick={(e) => handleScrollRight(e)}
       >
         →
       </button>
 
       <div
         ref={scrollRef}
-        className="flex gap-5 py-5 overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide"
+        className="flex gap-5 py-5 overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide z-0"
       >
         {products.map((product) => (
           <ProductCard product={product} key={product.id} />
