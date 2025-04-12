@@ -70,7 +70,9 @@ export const Questions = () => {
         className="flex items-center justify-between w-full cursor-pointer"
         onClick={options.onClick}
       >
-        <span className="text-[16px] font-semibold">{options.title}</span>
+        <span className="text-[16px] font-semibold text-start">
+          {options.title}
+        </span>
         <XIcon
           className={`transition duration-300 ${
             isActive ? "" : "rotate-45"

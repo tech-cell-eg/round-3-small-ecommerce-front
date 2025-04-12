@@ -29,8 +29,10 @@ export const Discover = () => {
           {FEATURES.map((item) => {
             return (
               <div key={item.title}>
-                <p className="text-[16px] text-custom-grey-15">{item.title}</p>
-                <p className="text-[14px] text-custom-grey-40">
+                <p className="text-[16px] text-custom-grey-15 whitespace-nowrap">
+                  {item.title}
+                </p>
+                <p className="text-[14px] text-custom-grey-40 whitespace-nowrap">
                   {item.paragraph}
                 </p>
               </div>

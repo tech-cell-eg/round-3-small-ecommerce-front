@@ -26,7 +26,7 @@ const responsiveOptions = [
     numScroll: 1,
   },
   {
-    breakpoint: "1199px",
+    breakpoint: "1440px",
     numVisible: 2,
     numScroll: 1,
   },

@@ -23,8 +23,8 @@ export const ReviewCard = ({ dummyComment }: Props) => {
   };
 
   return (
-    <div className="bg-custom-white-99 rounded-2xl p-5">
-      <div className="flex items-center justify-between gap-4">
+    <div className="bg-custom-white-99 rounded-2xl p-5 h-full">
+      <div className="flex items-center justify-between gap-4 ">
         <div className="flex items-center gap-4">
           <div className="size-[50px] bg-custom-yellow-50 rounded-full">
             <img src={dummyComment.image} alt="" />

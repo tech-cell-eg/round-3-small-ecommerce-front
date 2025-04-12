@@ -2,6 +2,8 @@ import Logo from "../assets/icons/Logo.png";
 import FacebookButton from "../assets/icons/facebook-button.png";
 import TwitterButton from "../assets/icons/twitter-button.png";
 import LinkedInButton from "../assets/icons/linkedin-button.png";
+import { useAppDispatch } from "../redux/reduxHooks";
+import { showToast } from "../redux/slices/toastSlice";
 
 const FOOTER_LINKS = [
   {
@@ -42,29 +44,45 @@ const FOOTER_LINKS = [
 ];
 
 export const Footer = () => {
+  const dispatch = useAppDispatch();
+
+  function handleSubscribe(e: React.FormEvent) {
+    e.preventDefault();
+    dispatch(
+      showToast({
+        severity: "success",
+        summary: "Success",
+        detail: "Subscribed successfully",
+      })
+    );
+  }
+
   return (
-    <div className="max-w-[1596px] mx-auto">
+    <div>
       <footer className="mt-24 2xl:mt-36 hidden md:flex border-t border-gray-200 px-5 md:px-20 lg:px-40 border-b">
         <div className="flex w-full flex-wrap md:flex-col xl:flex-row">
           {/* Left section */}
-          <div className="flex flex-col pr-20 border-r border-gray-200 py-[80px] md:mx-auto lg:mx-0 md:pr-0 lg:pr-20 md:border-0 lg:border-r">
+          <div className="flex flex-col pr-20 border-r border-gray-200 py-[80px] md:mx-auto lg:mx-0 md:pr-0 lg:pr-5 2xl:pr-20 md:border-0 lg:border-r">
             <div className="logo pb-12">
               <img src={Logo} alt="" />
             </div>
-            <div className="flex ">
+            <form className="flex" onSubmit={(e) => handleSubscribe(e)}>
               <input
-                type="text"
+                type="email"
                 placeholder="Enter Your Email"
-                className="bg-[#F1F1F3] h-[60px] w-[320px] rounded-[32px] p-7 text-[#98989A] text-lg"
+                className="bg-[#F1F1F3] h-[60px] 2xl:w-[320px] rounded-[32px] p-7 text-[#98989A] text-lg"
               />
-              <button className="bg-[#FFD500] h-[60px] w-[150px] rounded-[32px] text-lg ml-2">
+              <button
+                className="bg-[#FFD500] h-[60px] w-[150px] rounded-[32px] text-lg ml-2"
+                type="submit"
+              >
                 Subscribe
               </button>
-            </div>
+            </form>
           </div>
 
           {/* Right section */}
-          <div className="flex flex-1 flex-wrap justify-between pl-20 py-[80px]">
+          <div className="flex flex-1 flex-wrap justify-between lg:pl-10 2xl:pl-20 py-[80px]">
             {FOOTER_LINKS.map((link) => (
               <div key={link.title}>
                 <p className="font-medium text-xl mb-9">{link.title}</p>
@@ -103,6 +121,17 @@ export const Footer = () => {
 };
 
 function FooterMobile() {
+  const dispatch = useAppDispatch();
+  function handleSubscribe(e: React.FormEvent) {
+    e.preventDefault();
+    dispatch(
+      showToast({
+        severity: "success",
+        summary: "Success",
+        detail: "Subscribed successfully",
+      })
+    );
+  }
   return (
     <div className="flex flex-col gap-5 md:hidden px-3 py-6 mt-20">
       {/* Logo and socials */}
@@ -117,16 +146,23 @@ function FooterMobile() {
         </div>
       </div>
       {/* Input and subscribe */}
-      <div className="flex justify-between flex-wrap gap-3">
+
+      <form
+        className="flex justify-between gap-3"
+        onSubmit={(e) => handleSubscribe(e)}
+      >
         <input
-          type="text"
+          type="email"
           placeholder="Enter Your Email"
-          className="bg-[#F1F1F3] h-[50px] w-[230px] rounded-[32px] p-7 text-[#98989A] text-[14px]"
+          className="bg-[#F1F1F3] h-[50px] w-full rounded-[32px] p-7 text-[#98989A] text-[14px]"
         />
-        <button className="bg-[#FFD500] h-[50px] w-[116px] rounded-[32px] text-[14px]">
+        <button
+          className="bg-[#FFD500] h-[50px] w-[116px] rounded-[32px] text-[14px] "
+          type="submit"
+        >
           Subscribe
         </button>
-      </div>
+      </form>
 
       {/* Links */}
       <div className="flex gap-6 justify-center border-t border-gray-200 pt-6">
