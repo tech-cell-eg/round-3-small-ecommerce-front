@@ -27,14 +27,12 @@ const ColorSelector = ({
   }
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-0.5">
       {colors.map((color) => (
         <button
           key={color.name}
-          className={`w-6 h-6 rounded-full border transition-all cursor-pointer ${
-            selectedColor === color.name
-              ? "ring-2 ring-offset-2 ring-yellow-200"
-              : "ring-0"
+          className={`w-4 h-4 xl:w-5 xl:h-5 rounded-full border transition-all cursor-pointer ${
+            selectedColor === color.name ? "" : "ring-0"
           }`}
           style={{ backgroundColor: color.value }}
           onClick={() => handleClick(color)}

@@ -50,7 +50,7 @@ export const ProductsCarousel = ({ products }: Props) => {
   return (
     <div className="relative mt-8">
       <button
-        className={`absolute left-10 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:cursor-pointer transition-opacity ${
+        className={`absolute left-10 lg:-left-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:cursor-pointer transition-opacity ${
           scrollableLeft ? "opacity-100" : "opacity-25"
         } z-10`}
         onClick={(e) => handleScrollLeft(e)}
@@ -59,7 +59,7 @@ export const ProductsCarousel = ({ products }: Props) => {
       </button>
 
       <button
-        className={`absolute right-10 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:cursor-pointer transition-opacity ${
+        className={`absolute right-10 lg:-right-12 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:cursor-pointer transition-opacity ${
           scrollableRight ? "opacity-100" : "opacity-25"
         } z-10`}
         onClick={(e) => handleScrollRight(e)}
