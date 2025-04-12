@@ -57,7 +57,6 @@ const ProductDetail = () => {
   const [dynamicProduct, setDynamicProduct] = useState<Product>();
   const [selectedColor, setSelectedColor] = useState(staticColors[0].name);
   const [selectedSize, setSelectedSize] = useState(staticSizes[1]);
-  // const productImages = [img, img1, img2, img3];
 
   useEffect(() => {
     // scroll to top
@@ -176,7 +175,7 @@ const ProductDetail = () => {
       </div>
 
       {/* Reviews Section */}
-      <Reviews reviews={dynamicProduct.reviews} />
+      <Reviews />
 
       {/* FAQ Section */}
       <ProductPanels />
