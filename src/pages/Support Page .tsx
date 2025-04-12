@@ -95,7 +95,7 @@ const SupportPage = () => {
       <main className="max-w-7xl mx-auto px-4 py-12 md:px-8 ">
         {/* Support Header Section  */}
         <div className="md:mb-16 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             <div className="text-2xl md:text-3xl font-bold">
               KLOTHINK SUPPORT{" "}
               <span className="text-gray-400 uppercase text-sm">
@@ -106,7 +106,6 @@ const SupportPage = () => {
                 Questions. Our Support is Always Just a Click or Call Away.
               </p>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 border p-6 border-gray-200 rounded-xl pt-4 md:pt-8">
               <div>
                 <h3 className="font-medium mb-1 text-sm text-gray-400">
@@ -200,7 +199,7 @@ const SupportPage = () => {
             satisfaction with every purchase.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 border-1 p-6 rounded-xl border-gray-200 pt-4 md:pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 border-1 p-10  rounded-xl border-gray-200 pt-4 md:pt-8">
             {returnPolicyItems.map((item, index) => (
               <div key={index} className="mb-4 md:mb-0">
                 <h3 className="font-semibold mb-2 md:mb-3 text-sm">

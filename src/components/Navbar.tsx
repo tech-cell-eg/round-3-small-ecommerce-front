@@ -10,6 +10,7 @@ import { CartDropdown } from "./CartDropdown";
 export const Navbar = () => {
   const [activeLink, setActiveLink] = useState("/");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const cart = useAppSelector((state) => state.cart);
 
@@ -21,13 +22,17 @@ export const Navbar = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const handleMenuClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
       <div className="w-full py-2 responsive-padding  bg-black text-[10px] md:text-xs flex items-center justify-center text-white">
         <p>Subscribe to our Newsletter For Latest Collections</p>
         <img src={icon} alt="Arrow Right" className="w-4 h-4 ml-2 text-black" />
       </div>
-      <header className="w-full py-4 responsive-padding  bg-white border-b border-gray-200">
+      <header className="w-full py-4 responsive-padding bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Navbar links on larger screens */}
           <div className="flex items-center gap-8">
@@ -98,8 +103,11 @@ export const Navbar = () => {
 
             {/* Button on the right */}
             <div className="flex gap-3">
-              <button className="p-2 relative" onClick={handleCartClick}>
-                <img src={Button} alt="Cart" className="w-11 h-11" />
+              <button
+                className="p-2 relative cursor-pointer"
+                onClick={handleCartClick}
+              >
+                <img src={Button} alt="Cart" className="w-11 h-11 " />
                 <div className="absolute top-0 right-0 size-5 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">
                   {cart.length}
                 </div>
@@ -109,9 +117,45 @@ export const Navbar = () => {
                   </div>
                 ) : null}
               </button>
-              <button className=" text-white     hover:cursor-pointer hover:bg-gray-50 rounded-full p-2  ">
+              <button
+                className="text-white hover:cursor-pointer hover:bg-gray-50 rounded-2xl p-3"
+                onClick={handleMenuClick}
+              >
                 <img src={icon2} alt="Menu" className="w-8.5 h-8.5" />
               </button>
+              {isMenuOpen && (
+                <div className="absolute top-20 right-0 bg-white shadow-md rounded-md z-10">
+                  <ul className="flex flex-col">
+                    <li>
+                      <Link
+                        to="/"
+                        className="block px-4 py-2 text-black hover:bg-gray-200"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/products"
+                        className="block px-4 py-2 text-black hover:bg-gray-200"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Products
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/support"
+                        className="block px-4 py-2 text-black hover:bg-gray-200"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Contact Support
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>

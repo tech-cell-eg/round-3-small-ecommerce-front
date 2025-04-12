@@ -12,6 +12,9 @@ import Reviews from "../components/productsDetails/Reviews";
 import ProductPanels from "../components/productsDetails/ProductPanels";
 import { useParams } from "react-router-dom";
 import { Product } from "../types/product";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { addToCart, removeFromCart } from "../redux/slices/cartSlice";
+import { showToast } from "../redux/slices/toastSlice";
 
 // Mock product data
 const productData = {
@@ -57,8 +60,8 @@ const ProductDetail = () => {
   const [dynamicProduct, setDynamicProduct] = useState<Product>();
   const [selectedColor, setSelectedColor] = useState(staticColors[0].name);
   const [selectedSize, setSelectedSize] = useState(staticSizes[1]);
-  // const productImages = [img, img1, img2, img3];
-
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.cart);
   useEffect(() => {
     // scroll to top
     window.scrollTo(0, 0);
@@ -81,6 +84,27 @@ const ProductDetail = () => {
     return <div>Loading...</div>;
   }
 
+  function handleAddToCart(product: Product) {
+    if (cart.some((item) => item.id === product.id)) {
+      dispatch(removeFromCart(product.id));
+      dispatch(
+        showToast({
+          severity: "secondary",
+          summary: "Success",
+          detail: "Product removed from cart",
+        })
+      );
+    } else {
+      dispatch(addToCart(product));
+      dispatch(
+        showToast({
+          severity: "success",
+          summary: "Success",
+          detail: "Product added to cart",
+        })
+      );
+    }
+  }
   return (
     <main className="max-w-7xl mx-auto px-4 py-8 md:px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
@@ -121,7 +145,10 @@ const ProductDetail = () => {
               </button>
 
               {/* Add to Cart Button */}
-              <button className="p-4 w-44 h-14 text-black text-sm font-medium rounded-full border-2 border-gray-300 flex items-center justify-center gap-2 hover:bg-gray-100 transition-all">
+              <button
+                className="p-4 w-44 h-14 text-black text-sm font-medium rounded-full border-2 border-gray-300 flex items-center justify-center gap-2 hover:bg-gray-100 transition-all"
+                onClick={() => handleAddToCart(dynamicProduct)}
+              >
                 <ShoppingCart className="h-4 w-4" />
                 Add to cart
               </button>
@@ -176,7 +203,7 @@ const ProductDetail = () => {
       </div>
 
       {/* Reviews Section */}
-      <Reviews reviews={dynamicProduct.reviews} />
+      <Reviews />
 
       {/* FAQ Section */}
       <ProductPanels />
