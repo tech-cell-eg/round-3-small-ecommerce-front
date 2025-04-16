@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "../assets/icons/Button.png";
 import icon from "../assets/icons/Icon.png";
 import icon2 from "../assets/icons/Icon.svg";
@@ -8,15 +8,11 @@ import { useAppSelector } from "../redux/reduxHooks";
 import { CartDropdown } from "./CartDropdown";
 
 export const Navbar = () => {
-  const [activeLink, setActiveLink] = useState("/");
+  const { pathname } = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const cart = useAppSelector((state) => state.cart);
-
-  const handleLinkClick = (link: string) => {
-    setActiveLink(link);
-  };
 
   const handleCartClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -39,20 +35,16 @@ export const Navbar = () => {
             <nav className="hidden md:flex items-center gap-4 w-60 h-14">
               <Link
                 to="/"
-                onClick={() => handleLinkClick("/")}
                 className={`px-6 py-3.5 text-[#656567] rounded-4xl border-1 border-[#ececec] ${
-                  activeLink === "/"
-                    ? "bg-gray-400 text-black"
-                    : "bg-transparent"
+                  pathname === "/" ? "bg-gray-400 text-black" : "bg-transparent"
                 }`}
               >
                 Home
               </Link>
               <Link
                 to="/products"
-                onClick={() => handleLinkClick("/products")}
                 className={`px-6 py-3.5  rounded-4xl bg-gray-200 border-1 border-[#ececec] ${
-                  activeLink === "/products"
+                  pathname === "/products"
                     ? "bg-gray-400"
                     : "bg-transparent text-[#656567] "
                 }`}

@@ -4,6 +4,7 @@ import TwitterButton from "../assets/icons/twitter-button.png";
 import LinkedInButton from "../assets/icons/linkedin-button.png";
 import { useAppDispatch } from "../redux/reduxHooks";
 import { showToast } from "../redux/slices/toastSlice";
+import { useState } from "react";
 
 const FOOTER_LINKS = [
   {
@@ -45,6 +46,8 @@ const FOOTER_LINKS = [
 
 export const Footer = () => {
   const dispatch = useAppDispatch();
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   function handleSubscribe(e: React.FormEvent) {
     e.preventDefault();
@@ -57,6 +60,22 @@ export const Footer = () => {
     );
   }
 
+  const validateEmail = (email: string) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
+
+  const handleSubscribeSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validateEmail(email)) {
+      setEmailError("");
+      handleSubscribe(e);
+    } else {
+      setEmailError("Invalid email address");
+    }
+  };
+
   return (
     <div>
       <footer className="mt-24 2xl:mt-36 hidden md:flex border-t border-gray-200 px-5 md:px-20 lg:px-40 border-b">
@@ -66,11 +85,13 @@ export const Footer = () => {
             <div className="logo pb-12">
               <img src={Logo} alt="" />
             </div>
-            <form className="flex" onSubmit={(e) => handleSubscribe(e)}>
+            <form className="flex" onSubmit={(e) => handleSubscribeSubmit(e)}>
               <input
                 type="email"
                 placeholder="Enter Your Email"
                 className="bg-[#F1F1F3] h-[60px] 2xl:w-[320px] rounded-[32px] p-7 text-[#98989A] text-lg"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <button
                 className="bg-[#FFD500] h-[60px] w-[150px] rounded-[32px] text-lg ml-2"
@@ -79,6 +100,7 @@ export const Footer = () => {
                 Subscribe
               </button>
             </form>
+            {emailError && <p className="text-red-500 mt-2">{emailError}</p>}
           </div>
 
           {/* Right section */}
@@ -122,6 +144,15 @@ export const Footer = () => {
 
 function FooterMobile() {
   const dispatch = useAppDispatch();
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email: string) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
+
   function handleSubscribe(e: React.FormEvent) {
     e.preventDefault();
     dispatch(
@@ -132,6 +163,17 @@ function FooterMobile() {
       })
     );
   }
+
+  const handleSubscribeSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validateEmail(email)) {
+      setEmailError("");
+      handleSubscribe(e);
+    } else {
+      setEmailError("Invalid email address");
+    }
+  };
+
   return (
     <div className="flex flex-col gap-5 md:hidden px-3 py-6 mt-20">
       {/* Logo and socials */}
@@ -149,12 +191,14 @@ function FooterMobile() {
 
       <form
         className="flex justify-between gap-3"
-        onSubmit={(e) => handleSubscribe(e)}
+        onSubmit={(e) => handleSubscribeSubmit(e)}
       >
         <input
           type="email"
           placeholder="Enter Your Email"
           className="bg-[#F1F1F3] h-[50px] w-full rounded-[32px] p-7 text-[#98989A] text-[14px]"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <button
           className="bg-[#FFD500] h-[50px] w-[116px] rounded-[32px] text-[14px] "
@@ -163,7 +207,7 @@ function FooterMobile() {
           Subscribe
         </button>
       </form>
-
+      {emailError && <p className="text-red-500 mt-2">{emailError}</p>}
       {/* Links */}
       <div className="flex gap-6 justify-center border-t border-gray-200 pt-6">
         <a href="/">Home</a>

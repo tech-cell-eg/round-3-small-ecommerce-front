@@ -23,7 +23,7 @@ export const ReviewCard = ({ dummyComment }: Props) => {
   };
 
   return (
-    <div className="bg-custom-white-99 rounded-2xl p-5 h-full">
+    <div className="bg-custom-white-99 rounded-2xl p-5 h-full me-4">
       <div className="flex items-center justify-between gap-4 ">
         <div className="flex items-center gap-4">
           <div className="size-[50px] bg-custom-yellow-50 rounded-full">
@@ -45,7 +45,7 @@ export const ReviewCard = ({ dummyComment }: Props) => {
           />
         </div>
       </div>
-      <p className="font-normal text-custom-grey-30 mt-4">
+      <p className="font-normal text-custom-grey-30 mt-4 min-h-[60px]">
         {dummyComment.comment}
       </p>
     </div>
