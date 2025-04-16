@@ -43,7 +43,7 @@ const responsiveOptions = [
     navigator: true,
   },
   {
-    breakpoint: "767px",
+    breakpoint: "1000px",
     numVisible: 2,
     numScroll: 1,
     navigator: true,
